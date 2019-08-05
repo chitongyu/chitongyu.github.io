@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js练习</title>
+	<meta charset="utf-8">
+	<script src="scripts/js练习.js" async></script>
+	<noscript>浏览器暂时不支持javascript</noscript>
+	
+</head>
+<body>
+	<p>今天的时间</p>
+	<p id="demo">js练习</p>
+	<button type="button" onclick="getdate()">日期</button></body><br><br>
+	<img id="chengyuxi" src="images/程予希.jpg" onclick="changeimg(this)" width="100" height="">
+
+	<!--不能输入数字-->
+	<form>	
+		Type some text (numbers not allowed):
+		<input type="text" onkeydown="return noNumbers(event)" />
+	</form>
+	<br/>
+	<p id="demo2">fef </p>
+
+	<p>局部变量计数。</p>
+	<button type="button" onclick="myFunction3()">计数!</button>
+	
+	<p id="demo3">0</p>
+	<!--1-->
+	<!--
+			<p>点击按钮执行 <em>displayDate()</em> 函数.</p>
+			<button id="myBtn" onclick="displayDate()">点这里</button>
+			<script>
+				function displayDate()
+				{
+					document.getElementById("demo").innerHTML=Date();
+				}
+			</script>
+			<p id="demo"></p>
+	-->
+	<!--与上面等价
+			<p>点击按钮执行 <em>displayDate()</em> 函数.</p>
+			<button id="myBtn">点这里</button>
+			<script>
+				document.getElementById("myBtn").onclick = function(){displayDate()};
+				function displayDate()
+				{
+					document.getElementById("demo").innerHTML=Date();
+				}
+			</script>
+	-->
+
+	<!--2-->
+	<!--
+	<p>实例演示了在使用 addEventListener() 方法时如何传递参数。</p>
+	<p>点击按钮执行计算。</p>
+	<button id="myBtn">点我</button>
+	<p id="demo"></p>
+	<script>
+		var p1 = 5;
+		var p2 = 7;
+		document.getElementById("myBtn").addEventListener("click", function() {//只能使用“匿名函数”调用带参数的函数
+		    myFunction(p1, p2);
+		});
+		function myFunction(a, b) {
+		    var result = a * b;
+		    document.getElementById("demo").innerHTML = result;
+		}
+	</script>
+	-->
+	
+	
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		定位
+	</title>
+	<style>
+		*{
+			margin: 0px;
+			padding-top: 0px
+		}
+/*		.father {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			position: relative;
+			top: 50px;
+			left: 50px;
+
+		}*/
+		.son {
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			display: none;
+		}
+		.son2 {
+			width: 50px;
+			height: 50px;
+			background-color: yellow;
+			
+
+		}
+		li {
+			text-decoration: none;
+			list-style: none;
+			width: 50px;
+			height:50px;
+			white-space: nowrap;/*1、强制在一行显示*/
+			overflow: hidden;/*2、超出的部分隐藏显示*/
+			text-overflow: ellipsis;/*3、超出的部分使用省略号替代*/
+			line-height: 50px;
+			
+		}
+		a {
+			/*width: 40px;*/
+			height: 33px;
+			display: inline-block;
+			background: url(images/to.png) no-repeat;
+			text-decoration: none;
+			list-style: none;
+			color: #ccc;
+			padding-left: 19px;
+			line-height: 30px;
+		}
+
+		span {
+			/*width: 40px;*/
+			height: 33px;
+			display: inline-block;
+			background: url(images/to.png) no-repeat right;0
+			padding-right: 19px;
+		}
+
+		a:hover,a:hover span{
+			background-image: url(images/ao.png);
+		}
+/*		a:hover span {
+			background: url(images/ao.png) no-repeat right;
+		}*/
+
+	</style> 
+</head>
+<body>
+	<div class="father">
+		<div class="son">
+			
+		</div>
+		<div class="son2">
+			
+		</div>
+		<li>fsefsef<li>
+	</div>
+
+	<a href="#">
+		<span>首sesf页</span>
+	</a>
+</body>
+</html>

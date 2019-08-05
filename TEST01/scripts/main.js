@@ -25,7 +25,7 @@ function setUserName(){
 
 function setHeading(name){
 	let myheading = document.querySelector('h1');
-	myheading.textContent = '程予希酷毙了，' + name + '!';
+	myheading.textContent = '程予希很帅，' + name + '!';
 }
 
 let storedName = localStorage.getItem('name');

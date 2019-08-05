@@ -2,18 +2,105 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="10">
+    <!--<meta http-equiv="refresh" content="5">-->
     <title>程予希</title>
-    <link rel ="shortcut icon" href="images/程予希.jpg">
+    <link rel="shortcut icon" href="images/程 予希.jpg">
     <link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="styles/css01.css" rel="stylesheet" type="text/css">
     <script src="scripts/main.js" async></script>
+    <noscript>抱歉，浏览器不支持 JavaScript!</noscript>
+    <style>
+    /*
+      p.posi{
+        position:-webkit-sticky;
+        position:sticky;
+        position: fixed;
+        top:20px;
+        padding: 5px;
+        background-color: #cae8ca;
+        border: 2px solid #4CAF50;
+        
+      }*/
+      ul{
+        position: fixed;
+        top:40px;
+        list-style-type: none;
+        margin-top: 5px;
+        right: 0px;
+        padding: 3px;
+      }
+      ul li{
+        top:20px;
+        margin-top: 1px;
+        padding: 1px;
+        width:200px;
+        background-color: #cae8ca;
+        border: 2px solid #4CAF50;
+        text-decoration: none;
+      }
+      ul li a{
+        text-decoration: none;
+        list-style-type: none; 
+      }
+      ul li:hover{
+        background-color: green;
+        color:white;
+      }
+
+      .kuozhe { 
+        width:15px;
+        height:15px;
+        position: relative;
+        border-bottom: 5px solid cyan;
+        border-left: 5px solid cyan;
+        left:16px;
+        transform:rotate(45deg);
+        border-radius: 2px;
+      }
+      .kuozhe:hover{
+        border-color: #339999;
+      }
+
+      #back p {
+        float:left;
+      }
+      #goback1 {
+        height:20px;
+        position: relative;
+        border-left: 5px solid cyan;
+        border-radius: 2px 0px 2px 2px; 
+      }
+
+      #goback2 {
+        height:5px;
+        position: relative;
+        border-left: 15px solid cyan; //不能用border-bottom，这个改变不了右上角的弧度
+        border-radius: 0px 2px 2px 0px;
+      }
+      #back {
+        transform:rotate(-45deg);
+      }
+      #back:hover #goback1{
+        border-color: #339999;
+      }
+      #back:hover #goback2{
+        border-color: #339999;
+      }
+
+      .heightline {
+        height:50px;
+        width: 30px
+        background-color: green;
+        line-height: 10px;
+      }
+
+    </style>
   </head>
   <body>
     <h1>程予希 酷毙了！</h1>
     <img src="images/程予希.jpg" alt="Firefox 标志：一只盘旋在地球上的GOOGLE" height="200">
-
-    <p>Mozilla 是一个全球社区，这里聚集着来自五湖四海的</p>
+  
+    <p class="posi">Mozilla 是一个全球社区，这里聚集着来自五湖四海的</p>
     <form action="">
     <input list="browsers" name="browser">
     <datalist id="browsers">
@@ -25,10 +112,40 @@
     </datalist>
     <input type="submit">
     </form>
+    <div>
+       <ul>
+        <li>
+          <a href="#我是美男">我是美男</a>
+        </li>
+        <li>
+          <a href="#挪威的森林">挪威的森林</a>
+        </li>
+        <li>
+          <a href="#制霸青春">制霸青春</a>
+      </ul>
+    </div>
+    <br/>
+    <br/>
 
-    <p>我们致力于让 Internet 保持活力，保持畅通，人人皆可贡献，人人皆可创造。我们坚信：开放平台的协作对于人的发展至关重要，也决定着我们共同的未来。</p>
+   <div class="heightline">
+      行高
+    </div>
+   
+
+    <p>程予希（1988年6月16日－），本名苏笠汶，台湾女演员, 曾为CastAway贝斯手，于2013年因演艺事业暂时退团。</p>
+
+    <p>程予希（1988年6月16日－），本名苏笠汶，台湾女演员，曾为CastAway贝斯手，于2013年因演艺事业暂时退团。</p>
+
+
 
     <p>为了达成我们共同的理想，我们遵循一系列的价值观和理念，请参阅 <a href="https://www.mozilla.org/zh-CN/about/manifesto/">Mozilla 宣言</a>。</p>
     <button>切换用户</button>
+    <p class="kuozhe"></p>
+
+    <div id="back">
+        <p id="goback1"></p>
+        <p id="goback2"></p>
+    </div>
+
   </body>
 </html>
