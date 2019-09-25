@@ -1,3 +1,22 @@
+.DS_Store
+node_modules
+/dist
+mui-master
+/node_modules
+# local env files
+.env.local
+.env.*.local
 
-TEST01/readme.txt
-TEST01/800.abap
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

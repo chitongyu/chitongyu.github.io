@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../scripts/vue-2.4.0.js"></script>
+    <script src="../scripts/vue-router-3.0.1.js"></script>
+    <title>Document</title>
+    <style>
+    .router-link-active {
+        color:firebrick;
+        font-weight: 700;
+        font-size: 40px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <a href="#/login">登录</a>
+        <a href="#/register">注册</a>
+        <router-view></router-view> -->
+        <router-link to="/login/12">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <router-view></router-view>
+
+    </div>
+    <script>
+        var login = {
+            template: '<h1>登录的路由</h1>',
+            data() {
+                return {}
+            },
+            created(){
+                // console.log(this.$route.query.id)
+                // console.log(this.$route.params.id)
+                console.log(this.$route)
+            }
+        }
+        var register = {
+            template: '<h1>注册的路由</h1>'
+        }
+        var routerObj = new VueRouter({
+            routes:[
+                // {path: '/',component: login},
+                {path: '/', redirect: '/login'},
+                {path:'/login/:id',component: login},//监听的路由连接地址
+                {path: '/register',component: register }
+            ],
+            linkActiveClass: 'myActive'
+        })
+
+        var vm = new Vue({
+            // el: '#app',
+            data: {
+                firstName:'',
+                lastName:'',
+                fullName: ''
+            },
+            methods: {},
+            router: routerObj,
+            watch: {
+                'this.$route.path':function(newValue,oldValue){
+                    this.fullname = newValue + this.lastname
+                }
+            }
+        }).$mount('#app')
+    </script>
+</body>
+
+</html>

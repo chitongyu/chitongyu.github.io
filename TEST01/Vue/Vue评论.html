@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>评论</title>
+    <script src="../scripts/vue-2.4.0.js"></script>
+    <link href="../styles/animate.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../styles/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <!-- bs3-list-group:badges -->
+    <div id="app">
+        <com1 @update="loadComments"></com1>
+
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list" :key="item.id">
+                <span class="badge">评论人：{{item.name}}</span>
+                {{item.content}}
+            </li>
+        </ul>
+    </div>
+
+    <template id="tmp1">
+        <div>
+            <div class="form-group">
+                <label>评论人：</label>
+                <input type="text" class="form-control" v-model="user">
+            </div>
+            <div class="form-group">
+                <label>评论内容：</label>
+                <textarea class="form-control" v-model="content"></textarea>
+            </div>
+            <div>
+                <input type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+            </div>
+            <br>
+        </div>
+    </template>
+
+    <script>
+        var commentbox = {
+            template: '#tmp1',
+            data(){//子组件必须返回一个方法
+                return {
+                    user: '',
+                    content: ''
+                }
+            },
+            methods:{
+                postComment(){//发中表评论，数据存到localStorage
+                    var comment = {id : Date.now(),name: this.user,content: this.content}
+                    var list = JSON.parse(localStorage.getItem('cmts')||'[]')
+                    list.unshift(comment)
+                    localStorage.setItem('cmts',JSON.stringify(list))
+                    this.content = this.user = ''
+                    this.$emit('update')
+                }
+            }
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: Date.now(), name: '李白', content: '天生我材必有用' },
+                    { id: Date.now(), name: '江小白', content: '劝君更尽一杯酒' },
+                    { id: Date.now(), name: '小白', content: '小小白' }
+                ]
+            },
+            created() {
+                this.loadComments()
+            },
+            methods: {
+                loadComments(){
+                    var list = JSON.parse(localStorage.getItem('cmts')||'[]')
+                    this.list = list
+                }
+            },
+            components: {
+                com1: commentbox
+            }
+        })
+    </script>
+</body>
+
+</html>

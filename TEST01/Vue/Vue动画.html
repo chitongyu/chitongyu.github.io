@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>动画</title>
+	<script src="../scripts/vue-2.4.0.js"></script>
+	<link href="../styles/animate.css" rel="stylesheet" type="text/css">
+	<style>
+		/* .v-enter,
+		.v-leave-to {
+			opacity: 0;
+			transform: translateX(100px)
+		}
+
+		.v-enter-active,
+		.v-leave-active {
+			transition: all 0.7s ease
+		} */
+
+		/* .v-enter-to,.v-leave { //没有必要写
+			opacity: 1;
+		} */
+		.my-enter,
+		.my-leave-to {
+			opacity: 0;
+			transform: translateY(70px)
+		}
+
+		.my-enter-active,
+		.my-leave-active {
+			transition: all 0.7s ease
+		}
+
+		.my-move {
+			transition: all 0.7s ease
+		}
+
+		.my-leave-active {
+			position: absolute;
+		}
+
+		.app {
+			position: relative;
+		}
+
+		.bird {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: red;
+			position: absolute;
+		}
+
+		ul {
+			margin-top: 20px;
+			padding: 0;
+			list-style: none;
+			position: relative;
+		}
+
+		li {
+			text-decoration: none;
+			width: 500px;
+			border: 1px dashed rgb(0, 119, 255);
+			line-height: 30px;
+			position: relative;
+			list-style: none;
+		}
+
+		.shan {
+			position: absolute;
+			right: 0px;
+			text-decoration: none;
+			color: rgb(15, 15, 15)
+		}
+
+		.shan:hover {
+			color: rgb(230, 19, 19);
+			text-decoration: underline;
+		}
+
+		li:hover {
+			background-color: rgb(35, 23, 199);
+			transition: all 0.7s ease
+		}
+	</style>
+</head>
+
+<body>
+	<div class="app">
+		<input type="button" value="toggle" @click='flag=!flag'>
+		<transition>
+			<h3 class="fh3" v-if="flag">这是一个h3</h3>
+		</transition>
+		<hr>
+		<input type="button" value="toggle2" @click='flag2=!flag2'>
+		<transition name="my">
+			<h6 class="fh6" v-if="flag2">这是一个h6</h6>
+		</transition>
+		<hr>
+		<input type="button" value="toggle3" @click='flag3=!flag3'>
+		<transition enter-active-class="animated wobble" leave-active-class="animated bounceOut" :duration="4000">
+			<h4 class="fh4" v-if="flag3">这是一个h4</h6>
+		</transition>
+		<hr>
+		<input type="button" class="birdbtn" value="我要飞" @click="click1">
+		<!-- 实现小球只飞向下不回去 startflag4=!flag4-->
+		<transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter">
+			<div class="bird" v-if="flag4"></div>
+		</transition>
+		<!-- 实现小球只飞向下不回去 end-->
+		<div class="lab">
+			<label>
+				ID:
+				<input type="input" class="id" value="idIn" placeholder="请输入ID" v-model="id">
+			</label>
+			<label>
+				name:
+				<input type="input" class="name" value="nameIn" placeholder="请输入NAME" v-model="name">
+			</label>
+			<input type="button" value="添加" @click="add">
+		</div>
+
+		<!-- <ul class="ite"> -->
+		<!-- 使用lsit的li进行动画效果时使用transition-group -->
+		<transition-group name="my" appear tag="ul">
+			<li v-for="(item,i) in list" :key="item.id">
+				{{ item.id }}===={{item.name}} <a class="shan" href="" @click.prevent="del(i)">删除</a>
+			</li>
+			<!-- <li class="shan">
+					<a href="">删除</a>
+				</li> -->
+		</transition-group>
+		<!-- </ul> -->
+
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '.app',
+			data: {
+				id: '',
+				name: '',
+				flag: false,
+				flag2: false,
+				flag3: false,
+				flag4: false,
+				list: [
+					{ id: 1, name: "yi" },
+					{ id: 2, name: "er" },
+					{ id: 3, name: "san" }]
+			},
+			methods: {
+				click1() {
+					this.flag4 = !this.flag4
+					console.log(1)
+				},
+				//el可以认为是通过getElementByClass获得的元素
+				beforeEnter(el) {
+					//起始位置
+					el.style.transform = "translate(50px , 0)"
+					console.log(2)
+				},
+				enter(el,done) {
+					//没有实际意义，写的目的是要有动画效果，相当于实时刷新页面，offserHeight、to盘、left均可
+					el.offsetWidth
+					el.style.transform = "translate(150px , 450px)"
+					el.style.transition = "all 1s ease"
+					//  this.afterEnter(el)
+					// console.log(3)
+					done()
+					// this.flag4 = !this.flag4	
+
+				},
+				// 动画进入之后
+				afterEnter(el) {
+					// el.style.transition = ""
+					// console.log(this.flag4)
+					this.flag4 = !this.flag4
+					// console.log(4)
+
+				},
+				// enterCancelled(el) {
+				// 	console.log(5)
+				// },
+				// beforeLeave(){console.log(6)},
+				// leave(){console.log(7)},
+				// afterLeave(){console.log(8)},
+				// leaveCancelled(){console.log(9)},
+				add() {
+					this.list.push({ id: this.id, name: this.name })
+					this.id = this.name = ''
+				},
+				del(i) {
+					this.list.splice(i, 1)
+				}
+			}
+		})
+	</script>
+
+
+
+</body>
+
+</html>
