@@ -78,8 +78,18 @@ var store = new Vuex.Store({
 					return true;
 				}
 			})
+			console.log('2121212');
 			localStorage.setItem("shopCar",JSON.stringify(state.shopList));
 			
+		},
+		updateSelected(state,selectedInfo) {
+			state.shopList.forEach(item=>{
+				if(item.id == selectedInfo.id){
+					item.selected = selectedInfo.selected;
+					return true;
+				}
+			})
+			localStorage.setItem("shopCar",JSON.stringify(state.shopList));
 		}
 		
 	},
@@ -90,6 +100,13 @@ var store = new Vuex.Store({
 				sumCount += item.count
 			})
 			return sumCount
+		},
+		getSelected(state){
+			let selectedList = {}
+			state.shopList.forEach(item=>{
+				selectedList[item.id] = item.selected
+			})
+			return selectedList
 		}
 	}
 })

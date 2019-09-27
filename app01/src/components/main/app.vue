@@ -5,7 +5,7 @@
       <a
         @click="goBack()"
         slot="left"
-        to="/home"
+        v-show = "flag"
       >
         <mt-button icon="back">返回</mt-button>
       </a>
@@ -63,14 +63,30 @@
 export default {
     data() {
         return {
-
+          flag: false,
         }
+    },
+    created(){
+      if(this.$route.path === '/home'){
+        this.flag = false;
+      }else {
+        this.flag = true;
+      } 
     },
     methods: {
         goBack() {
             this.$router.go(-1);
         }
-    }
+    },
+    watch: {
+          '$route.path':function(newValue){
+            if(newValue === '/home') {
+              this.flag = false;
+            }else {
+              this.flag = true;
+            }
+          }
+        }
 }
 </script>
 

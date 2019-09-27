@@ -3,15 +3,27 @@
     <div class="commodity">
       <div class="mui-card">
         <div class="mui-card-content">
-          <div class="mui-card-content-inner" v-for="(item,i) in shopCarList" :key=item.id>
-            <mt-switch></mt-switch>
+          <div
+            :key="item.id"
+            class="mui-card-content-inner"
+            v-for="(item,i) in shopCarList"
+          >
+            <mt-switch v-model="$store.getters.getSelected[item.id]" @change="selectedChange(item.id,$store.getters.getSelected[item.id])"></mt-switch>
             <img src="../../images/timg3.jpg" />
             <div class="info">
-              <h2>{{ item.name }}</h2>
-              <p>
+              <p class="title">{{ item.name }}</p>
+              <p class="priceAndNum">
                 <span class="price">￥{{ item.new_price }}</span>
-                <numbox :num="item.count" :goodsid="item.id" style="height: 25px"></numbox>
-                <a href="#" @click.prevent="removeOne(item.id,i)">刪除</a>
+                <numbox
+                  :goodsid="item.id"
+                  :num="item.count"
+                  style="height: 25px"
+                ></numbox>
+                <a
+                  @click.prevent="removeOne(item.id,i)"
+                  class="mui-icon mui-icon-trash delete"
+                  href="#"
+                ></a>
               </p>
             </div>
           </div>
@@ -28,31 +40,30 @@
 <script>
 import numbox from '../subcomponents/shopInfo_numbox.vue'
 export default {
-	date(){
+	data(){
 		return {
       shopCarList: [],
-      shop: "1",
 		}
 	},
 	components: {
 		numbox
 	},
 	created(){
-		this.getGoods();
+    this.getGoods();
 	},
 	methods: {
 		getGoods() {
 			this.shopCarList = JSON.parse(localStorage.getItem('shopCar') || '[]');
     },
     removeOne(id,index) {
-      // this.shop = '2';
-      console.log('this.shop');
-      console.log(this.shop);
-      console.log(this.shopCarList);
       var temp = this.shop;
-      console.log(temp);
       this.shopCarList.splice(index,1);
       this.$store.commit("deleteFromCar",id);
+    },
+    selectedChange(id,val) {
+      console.log('this.$store.getters.getSelected');
+      console.log(this.$store.getters.getSelected);
+      this.$store.commit('updateSelected',{id:id,selected:val});
     }
 	}
 }
@@ -70,7 +81,7 @@ export default {
     }
     .info {
       margin: 0;
-      h2 {
+      .title {
         font-size: 12px;
       }
       .price {
@@ -80,10 +91,22 @@ export default {
       a {
         font-size: 12px;
       }
-      display: flex;
+      display: -webkit-flex;
       flex-direction: column;
       justify-content: space-between;
     }
+    .priceAndNum {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
+}
+.shopcartContainer .mui-card-content-inner .info a[data-v-6aa92d06] {
+  font-size: 20px;
+  align-self: center;
+}
+.mui-icon-trash::before {
+  color: gray;
 }
 </style>

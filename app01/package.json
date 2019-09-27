@@ -7,11 +7,11 @@
     "url-loader": "^2.1.0",
     "vue-loader": "^14.2.4",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --open --port 3000 --hot --host 192.168.237.122"
+    "dev": "webpack-dev-server --open --port 3000 --hot --host 192.168.230.91"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
