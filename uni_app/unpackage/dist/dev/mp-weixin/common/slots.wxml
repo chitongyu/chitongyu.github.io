@@ -1,0 +1,10 @@
+<import src="/components/uni-ui/uni-swiper-dot/uni-swiper-dot.vue.wxml" />
+<import src="/components/uni-ui/uni-notice-bar/uni-notice-bar.vue.wxml" />
+<import src="/components/uni-ui/uni-grid/uni-grid.vue.wxml" />
+<import src="/components/uni-ui/uni-card/uni-card.vue.wxml" />
+<import src="/components/uni-ui/uni-icon/uni-icon.vue.wxml" />
+<import src="/components/u-charts/component.vue.wxml" />
+<import src="/common/slots.wxml" />
+
+<template name="M25523248-default-25523248-1"><swiper class="_swiper M25523248 swiper-box" bindchange="handleProxy" data-eventid="{{'25523248-0'}}" data-comkey="{{$k}}"><swiper-item wx:key="index" key="{{index}}" wx:for="{{info}}" wx:for-index="index" wx:for-item="item" class="_swiper-item M25523248"><image src="{{item.images}}" class="_image M25523248 swiper-item"></image></swiper-item></swiper></template>
+

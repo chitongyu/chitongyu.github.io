@@ -1,0 +1,2 @@
+<import src="./rotate.vue.wxml" />
+    <template is="49e6fb40" data="{{ ...$root['0'], $root }}"/>

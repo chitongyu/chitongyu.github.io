@@ -1,0 +1,2 @@
+<import src="./ring.vue.wxml" />
+    <template is="413f2e89" data="{{ ...$root['0'], $root }}"/>
