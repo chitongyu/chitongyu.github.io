@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>程予希3d旋转</title>
+</head>
+
+<body>
+	<div class="pers">
+		<div class="wrap">
+			<div class="out">
+				<div class="out-front"><img src="../../images/1.jpg" alt="1"></div>
+				<div class="out-back"><img src="../../images/2.jpg" alt="2"></div>
+				<div class="out-left"><img src="../../images/3.jpg" alt="3"></div>
+				<div class="out-right"><img src="../../images/4.jpg" alt="4"></div>
+				<div class="out-top"><img src="../../images/5.jpg" alt="5"></div>
+				<div class="out-bottom"><img src="../../images/6.jpg" alt="6"></div>
+			</div>
+			<div class="int">
+				<div class="int-front"><img src="../../images/1.jpg" alt="1"></div>
+				<div class="int-back"><img src="../../images/2.jpg" alt="2"></div>
+				<div class="int-left"><img src="../../images/3.jpg" alt="3"></div>
+				<div class="int-right"><img src="../../images/4.jpg" alt="4"></div>
+				<div class="int-top"><img src="../../images/5.jpg" alt="5"></div>
+				<div class="int-bottom"><img src="../../images/6.jpg" alt="6"></div>
+			</div>
+		</div>
+	</div>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.pers {
+			perspective: 1500px;
+			margin-top: 100px;
+		}
+
+		.wrap {
+			transform-style: preserve-3d;
+			width: 200px;
+			height: 200px;
+			position: relative;
+			margin:auto;
+			animation: myrotate 16s linear infinite;
+		}
+		.wrap .out {
+			width: 200px;
+			height: 200px;
+			position: absolute;
+		}
+		.wrap .out>div {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			opacity: .7	;
+		}
+		img {
+			height: 100%;
+			width: 100%;
+		}
+		.wrap .int {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+			transform-style: preserve-3d;
+			animation: myrotate1 16s linear infinite;
+		}
+		.wrap .int>div {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+		.out-front {
+			transform: translateZ(100px);
+		}
+		.out-back {
+			transform: translateZ(-100px);
+		}
+		.out-top {
+			transform: translateY(-100px) rotateX(90deg);
+		}
+		.out-bottom {
+			transform: translateY(100px) rotateX(-90deg);
+		}
+		.out-left {
+			transform: translateX(-100px) rotateY(-90deg);
+		}
+		.out-right {
+			transform: translateX(100px) rotateY(90deg);
+		}
+		
+		div:hover .out-front {
+			transform: translateZ(200px);
+		}
+		div:hover .out-back {
+			transform: translateZ(-200px);
+		}
+		div:hover .out-top {
+			transform: translateY(-200px) rotateX(90deg);
+		}
+		div:hover .out-bottom {
+			transform: translateY(200px) rotateX(-90deg);
+		}
+		div:hover .out-left {
+			transform: translateX(-200px) rotateY(-90deg);
+		}
+		div:hover .out-right {
+			transform: translateX(200px) rotateY(90deg);
+		}
+
+		.int-front {
+			transform: translateZ(50px);
+		}
+		.int-back {
+			transform: translateZ(-50px);
+		}
+		.int-top {
+			transform: translateY(-50px) rotateX(90deg);
+		}
+		.int-bottom {
+			transform: translateY(50px) rotateX(-90deg);
+		}
+		.int-left {
+			transform: translateX(-50px) rotateY(-90deg);
+		}
+		.int-right {
+			transform: translateX(50px) rotateY(90deg);
+		}
+
+		@keyframes myrotate {
+			from {
+				transform: rotateX(0deg) rotateY(0deg);
+			}
+			to {
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+		}
+		@keyframes myrotate1 {
+			from {
+				transform: rotateX(0deg) rotateY(0deg);
+			}
+			to {
+				transform: rotateX(-360deg) rotateY(-360deg);
+			}
+		}
+
+	</style>
+</body>
+
+</html>
