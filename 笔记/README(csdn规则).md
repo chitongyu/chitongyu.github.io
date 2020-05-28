@@ -215,7 +215,7 @@ cond(no)->op
 如果你想加载一篇你写过的.md文件，在上方工具栏可以选择导入功能进行对应扩展名的文件导入，
 继续你的创作。
 
- [^1]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
- [^2]: https://mermaidjs.github.io/
- [^3]: https://mermaidjs.github.io/
- [^4]: http://adrai.github.io/flowchart.js/
+ [1]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
+ [2]: https://mermaidjs.github.io/
+ [3]: https://mermaidjs.github.io/
+ [4]: http://adrai.github.io/flowchart.js/

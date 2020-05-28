@@ -1,0 +1,114 @@
+<!--
+ * @Author: Lyle
+ * @Date: 2020-04-02 17:31:36
+ * @LastEditors: Lyle
+ * @LastEditTime: 2020-04-02 21:50:56
+ * @Description: 
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>程予希旋转木马</title>
+	<style>
+		#perspectiv {
+			perspective: 700px;
+		}
+
+		body {
+			overflow: hidden;
+			background: #000000;
+		}
+
+		#wrap {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: 150px auto;
+			/* border: 1px solid black; */
+			transform-style: preserve-3d;
+			transform: rotateX(-8deg) rotateY(0deg);
+		}
+
+		#wrap img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			transform: rotateX(0deg) rotateY(0deg);
+			box-shadow: 0 0 1px #000000;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="perpective">
+		<div id="wrap">
+			<img src="images/1.jpg" />
+			<img src="images/2.jpg" />
+			<img src="images/3.jpg" />
+			<img src="images/4.jpg" />
+			<img src="images/5.jpg" />
+			<img src="images/6.jpg" />
+			<img src="images/7.jpg" />
+			<img src="images/8.jpg" />
+			<img src="images/9.jpg" />
+			<img src="images/10.jpg" />
+			<img src="images/11.jpg" />
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var imgElement = document.getElementsByTagName('img');
+			var wrapElement = document.getElementById('wrap');
+			var avg = 360 / imgElement.length;//平分360°
+			console.log("element", imgElement, wrapElement, avg);
+			Array.prototype.forEach.call(imgElement, function (el, index) {
+				el.style.transform =
+					'rotateY(' + avg * index + 'deg) translateZ(350px)';
+				// el.style.zIndex = -index;
+				el.style.transition = 'transform 1s ' + index * 0.1 + 's';
+			});
+			var poitx,
+				poity,
+				nowx,
+				nowy,
+				movex,
+				movey,
+				totalx = 0,
+				totaly = 0;
+			window.onmousedown = function (ed) {
+				var ed = ed; //获得事件源
+				//鼠标按下的位置
+				poitx = ed.clientX;
+				poity = ed.clientY;
+				//移动的情况是边移动边计算，一次移动会触发很多次的move所以会要累加和记录初始位置
+				this.onmousemove = function (em) {
+					var em = em; //获得事件源
+					//鼠标移动之后的位置
+					nowx = em.clientX;
+					nowy = em.clientY;
+					//鼠标移动的距离
+					movex = nowx - poitx;
+					movey = nowy - poity;
+
+					//总计移动距离
+					totaly += movex;
+					totalx += movey;
+
+					wrapElement.style.transform = "rotateX(" + totalx + "deg)" + " rotateY(" + totaly + "deg)"
+
+					poitx = nowx;
+					poity = nowy; //移动末期现坐标变为旧坐标
+				};
+				this.onmouseup = function () {
+					this.onmousemove = null;//消除鼠标没有点击移动的情况
+				};
+			};
+		};
+	</script>
+</body>
+
+</html>
