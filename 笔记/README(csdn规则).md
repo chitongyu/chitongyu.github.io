@@ -59,7 +59,7 @@ H~2~O is是液体。
 
 链接: [link](https://mp.csdn.net).
 
-图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw)
+图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw '程序员')
 
 带尺寸的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw =30x30)
 
@@ -187,7 +187,7 @@ B --> D{菱形}
 C --> D
 ```
 
-- 关于 **Mermaid** 语法，参考 [这儿][3],
+- 关于 **Mermaid** 语法，参考 [这儿][^3],
 
 ## FLowchart流程图
 
@@ -204,7 +204,7 @@ cond(yes)->e
 cond(no)->op
 ```
 
-- 关于 **Flowchart流程图** 语法，参考 [这儿][4].
+- 关于 **Flowchart流程图** 语法，参考 [这儿][^4].
 
 ## 导出与导入
 

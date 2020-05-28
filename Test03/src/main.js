@@ -1,3 +1,10 @@
+/*
+ * @Author: Lyle
+ * @Date: 2019-08-26 17:04:31
+ * @LastEditors: Lyle
+ * @LastEditTime: 2020-05-22 09:19:42
+ * @Description: 
+ */ 
 // import Vue from 'vue'//vue不完整，只提供了runtime-only
 import Vue from '../node_modules/vue/dist/vue.js' 
 import app from './components/app.vue' 
@@ -28,8 +35,6 @@ var vm = new Vue({
     // render: function(createElements) {
     //     return createElements(login)
     // },
-    render(h) {
-        return h(app)
-    },
+    render:h=>h(App),
     router,
 })

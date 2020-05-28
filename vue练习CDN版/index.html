@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <noscript>
+      <strong> 不支持javascript</strong>
+    </noscript>
+    <script src="lib/vue-2.4.0.js"></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>fefsfe</p>
+      <p v-cloak>{{msg}}</p>
+      <todo-item :todo="msg" class="bar"></todo-item>
+      <p>初始值：{{msg}}</p>
+      <p>翻转值（法一:数据）：{{msg.split('').reverse().join('')}}</p>
+      <p>翻转值（法二:函数）：{{reverseStr()}}</p>
+      <!--计算属性后面不加括号-->
+      <p>翻转值（法三:计算属性）：{{reverse}}</p>
+      <input type="radio" v-model="pick" v-bind:value="a" />
+      <label for="a">选项一</label>
+      <br />
+      <input type="radio" v-model="pick" v-bind:value="b" />
+      <label for="a">选项二</label>
+      <br />
+      <span>{{pick}}</span>
+
+      <div id="example-5">
+        <form>
+          <select v-model="selected" required autofocus>
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          <span>Selected: {{ selected }}</span>
+        </form>
+      </div>
+
+      <select v-model="num">
+        <!-- 内联对象字面量 -->
+        <option v-bind:value="{ number: 123 }">123</option>
+      </select>
+      <span>{{num}}</span>
+
+      <input v-model.number="age" type="number" />
+      <div class="static" :class="[isActive,hasError ]">测试数据</div>
+      <navigation-link class="1212">
+        Your Profile
+      </navigation-link>
+    </div>
+    <script>
+      Vue.component('todo-item', {
+        //放在Vue实例化之前
+        props: ['todo'],
+        data() {
+          return {
+            msgSon: '我是子组件',
+          };
+        },
+        template: '<li class="child">这是个待办项{{todo}}{{msgSon}}</li>',
+      });
+
+      Vue.component('navigation-link', {
+        //放在Vue实例化之前
+        data() {
+          return {
+            url: '#',
+          };
+        },
+        template:
+          '<a v-bind:href="url" class="nav-link"><slot>elelw</slot></a>',
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '我是父组件',
+          msg: 'hello 32',
+          isActive: false,
+          pick: '',
+          a: 212,
+          b: 331,
+          isAcive: 'active',
+          hasError: 'text-danger',
+          options: [
+            {
+              text: 'A',
+              value: 1,
+            },
+            {
+              text: 'B',
+              value: 2,
+            },
+            {
+              text: 'C',
+              value: 3,
+            },
+          ],
+          selected: '',
+          num: '',
+          age: '',
+        },
+        methods: {
+          reverseStr() {
+            return this.msg.split('').reverse().join('');
+          },
+        },
+        computed: {
+          //计算选项
+          //get方法
+          reverse() {
+            return this.msg.split('').reverse().join('');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
